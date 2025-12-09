@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.10)
+project(DSP_Project VERSION 1.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_compile_options(-Wall -Wextra -Wpedantic)
+file(GLOB SOURCES "src/*.cpp")
+include_directories(include)
+
+add_executable(DSP_App ${SOURCES})
+
+file(COPY test_data DESTINATION ${CMAKE_BINARY_DIR})
