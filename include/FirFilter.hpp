@@ -30,7 +30,7 @@ class FirFilter : public Filter<T, Size> {
     }
 
    public:
-    void setupLowPass(T freq) {  // do sprawdzenia działanie
+    void setupLowPass(T freq) {
         if (freq <= 0 || freq >= 0.5) {
             throw std::invalid_argument("Invalid frequency parameters! Use normalized frequency (0.0-0.5).");
         }
