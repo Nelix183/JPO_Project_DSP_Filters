@@ -10,4 +10,11 @@ include_directories(include)
 
 add_executable(DSP_App ${SOURCES})
 
-file(COPY test_data DESTINATION ${CMAKE_BINARY_DIR})
+add_custom_target(copy_test_data ALL
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/test_data
+    ${CMAKE_BINARY_DIR}/test_data
+    COMMENT "Kopiowanie test_data do katalogu build"
+)
+
+add_dependencies(DSP_App copy_test_data)

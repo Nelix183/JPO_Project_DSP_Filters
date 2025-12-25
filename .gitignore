@@ -1,6 +1,7 @@
 # Executable files
 *.exe
 *.out
+*.jl
 
 # Build directories
 build/
@@ -23,3 +24,8 @@ Makefile
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# docs
+*.docx
+*.typ
+*.png
