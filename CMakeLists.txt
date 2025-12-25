@@ -14,7 +14,7 @@ add_custom_target(copy_test_data ALL
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${CMAKE_SOURCE_DIR}/test_data
     ${CMAKE_BINARY_DIR}/test_data
-    COMMENT "Kopiowanie test_data do katalogu build"
+    COMMENT "Copy test_data to build"
 )
 
 add_dependencies(DSP_App copy_test_data)
