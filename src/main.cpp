@@ -40,27 +40,29 @@ int main() {
 
     // Display signal statistics
     std::cout << std::endl;
-    std::cout << signal.energy() << std::endl;  // Calculate total energy
-    std::cout << signal.power() << std::endl;   // Calculate average power
-    std::cout << signal.rms() << std::endl;     // Calculate RMS value
+    std::cout << "Energy: " << signal.energy() << std::endl;  // Calculate total energy
+    std::cout << "Power: " << signal.power() << std::endl;    // Calculate average power
+    std::cout << "RMS: " << signal.rms() << std::endl;        // Calculate RMS value
 
     // Process signals through different filters
     fir.process(signal1.data(), signal1.size());  // Apply FIR filter
     iir.process(signal2);                         // Apply IIR filter
     std::cout << std::endl;
 
+    std::cout << "FIR output signal: " << std::endl;
     // Print FIR filtered signal
     for (size_t i = 0; i < signal1.size(); i++) {
-        std::cout << signal1.data()[i] << ", ";
+        std::cout << signal1[i] << ", ";
     }
 
     // Save FIR filtered signal to file
     signal1.signalToFile("test_data/out.txt");
     std::cout << std::endl;
 
+    std::cout << "IIR output signal: " << std::endl;
     // Print IIR filtered signal
     for (size_t i = 0; i < signal2.size(); i++) {
-        std::cout << signal2.data()[i] << ", ";
+        std::cout << signal2[i] << ", ";
     }
 
     // Demonstrate polymorphism - user selects filter type at runtime
@@ -69,7 +71,7 @@ int main() {
 
     // Interactive filter selection
     while (1) {
-        std::cout << std::endl << "(1=fir 2=iir): ";
+        std::cout << std::endl << "Pick type of filter(1=fir 2=iir): ";
         std::cin >> option;
         std::cin.clear();
         std::cin.ignore(10000, '\n');
@@ -93,8 +95,9 @@ int main() {
 
     // Output the processed signal
     std::cout << std::endl;
+    std::cout << "Picked filter output signal: " << std::endl;
     for (size_t i = 0; i < signal.size(); i++) {
-        std::cout << signal.data()[i] << ", ";
+        std::cout << signal[i] << ", ";
     }
 
     // Clean up dynamically allocated memory
